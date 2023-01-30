@@ -1,0 +1,3 @@
+# awesome
+
+kindrobots awesome config
