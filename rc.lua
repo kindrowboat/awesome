@@ -428,16 +428,23 @@ globalkeys = gears.table.join(
     -- clipboard
     awful.key({ modkey }, "v",
         function ()
-            os.execute("clipmenu")
+            awful.spawn("clipmenu")
         end,
         {description = "clipmenu", group = "hotkeys"}),
 
     -- PrtScr Printscreen
     awful.key({ }, "Print",
         function ()
-            os.execute("flameshot gui")
+	    awful.spawn("spectacle")
         end,
-        {description = "screenshot", group = "hotkeys"})
+        {description = "screenshot", group = "hotkeys"}),
+
+    -- emoji picker
+    awful.key({ modkey }, ".",
+        function ()
+	    awful.spawn("emojipick")
+        end,
+        {description = "emoji picker", group = "hotkeys"})
 )
 
 clientkeys = gears.table.join(
