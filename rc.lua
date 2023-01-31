@@ -290,14 +290,14 @@ globalkeys = gears.table.join(
         function(c)
             cyclefocus.cycle({modifier="Alt_L"})
         end,
-        {description = "go to previous client", group = "client"}
+        {description = "cycle backwards through all clients", group = "client"}
     ),
     -- modkey+Shift+Tab: backwards
     awful.key({ altkey, "Shift" }, "Tab",
         function(c)
             cyclefocus.cycle({modifier="Alt_L"})
         end,
-        {description = "go to next client", group = "client"}
+        {description = "cycle forward through all clients", group = "client"}
     ),
 
     awful.key({ modkey,           }, "j",
@@ -423,7 +423,21 @@ globalkeys = gears.table.join(
         function ()
             os.execute("amixer -q set Master toggle")
         end,
-        {description = "toggle mute", group = "hotkeys"})
+        {description = "toggle mute", group = "hotkeys"}),
+
+    -- clipboard
+    awful.key({ modkey }, "v",
+        function ()
+            os.execute("clipmenu")
+        end,
+        {description = "clipmenu", group = "hotkeys"}),
+
+    -- PrtScr Printscreen
+    awful.key({ }, "Print",
+        function ()
+            os.execute("flameshot gui")
+        end,
+        {description = "screenshot", group = "hotkeys"})
 )
 
 clientkeys = gears.table.join(
