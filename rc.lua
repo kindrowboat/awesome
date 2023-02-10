@@ -274,6 +274,8 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
 	    battery_widget({
                 display_notification = true,
+                margin_left = 1,
+                margin_right = 1,
 	    }),
 	    weather_widget({
                 api_key='2851c7a36110bc119b0e9c816e522eda',
