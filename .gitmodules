@@ -4,3 +4,9 @@
 [submodule "cyclefocus"]
 	path = cyclefocus
 	url = https://github.com/blueyed/awesome-cyclefocus
+[submodule "json"]
+	path = json
+	url = https://github.com/rxi/json.lua
+[submodule "awesome-wm-widgets"]
+	path = awesome-wm-widgets
+	url = https://github.com/kindrowboat/awesome-wm-widgets.git

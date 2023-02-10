@@ -16,6 +16,12 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local lain = require("lain")
 local cyclefocus = require('cyclefocus')
+local weather_widget = require("awesome-wm-widgets.weather-widget.weather")
+local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+
+
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -64,22 +70,22 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
-    awful.layout.suit.corner.nw,
+    awful.layout.suit.tile,
+    awful.layout.suit.tile.bottom,
     awful.layout.suit.floating,
+    -- awful.layout.suit.tile.left,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
+    -- awful.layout.suit.corner.nw,
+    -- awful.layout.suit.magnifier,
+    -- awful.layout.suit.max.fullscreen,
+    -- awful.layout.suit.tile.top,
+    -- awful.layout.suit.fair,
+    -- awful.layout.suit.fair.horizontal,
+    -- awful.layout.suit.spiral,
+    -- awful.layout.suit.spiral.dwindle,
 }
 -- }}}
 
@@ -111,6 +117,13 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+local cw = calendar_widget({
+    placement = "top_right",
+})
+mytextclock:connect_signal("button::press",
+    function(_, _, _, button)
+        if button == 1 then cw.toggle() end
+    end)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -173,7 +186,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "www", "term", "γ", "δ", "ε", "ζ" }, s, awful.layout.layouts[1])
+    awful.tag({ "α", "β", "γ", "δ", "ε", "ζ" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -259,6 +272,15 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
+	    battery_widget({
+                display_notification = true,
+	    }),
+	    weather_widget({
+                api_key='2851c7a36110bc119b0e9c816e522eda',
+                coordinates = { 43.642344, -79.387062 },
+		show_hourly_forecast = true,
+                show_daily_forecast = true,
+            }),
             mytextclock,
             s.mylayoutbox,
         },
