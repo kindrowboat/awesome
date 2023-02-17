@@ -423,7 +423,9 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
+    awful.key({ modkey }, "p", function() awful.spawn("rofi -show drun") end,
+              {description = "show the menubar", group = "launcher"}),
+    awful.key({ modkey }, "`", function() awful.spawn("rofi -show window") end,
               {description = "show the menubar", group = "launcher"}),
 
     -- Screen brightness
@@ -452,9 +454,9 @@ globalkeys = gears.table.join(
     -- clipboard
     awful.key({ modkey }, "v",
         function ()
-            awful.spawn("clipmenu")
+            awful.spawn("rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'")
         end,
-        {description = "clipmenu", group = "hotkeys"}),
+        {description = "rofi clipboard", group = "hotkeys"}),
 
     -- PrtScr Printscreen
     awful.key({ }, "Print",
@@ -466,7 +468,7 @@ globalkeys = gears.table.join(
     -- emoji picker
     awful.key({ modkey }, ".",
         function ()
-	    awful.spawn("emojipick")
+	    awful.spawn("rofi -show emoji")
         end,
         {description = "emoji picker", group = "hotkeys"})
 )
