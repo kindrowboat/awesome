@@ -10,3 +10,6 @@
 [submodule "awesome-wm-widgets"]
 	path = awesome-wm-widgets
 	url = https://github.com/kindrowboat/awesome-wm-widgets.git
+[submodule "weather"]
+	path = weather
+	url = https://git.kindrobot.ca/kindrobot/weather.git
