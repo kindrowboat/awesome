@@ -16,9 +16,9 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local lain = require("lain")
 local cyclefocus = require('cyclefocus')
-local weather_widget = require("awesome-wm-widgets.weather-widget.weather")
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
 local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local weather = require('weather')
 
 
 
@@ -277,12 +277,7 @@ awful.screen.connect_for_each_screen(function(s)
                 margin_left = 1,
                 margin_right = 1,
 	    }),
-	    weather_widget({
-                api_key='2851c7a36110bc119b0e9c816e522eda',
-                coordinates = { 43.642344, -79.387062 },
-		show_hourly_forecast = true,
-                show_daily_forecast = true,
-            }),
+	    weather("Toronto"),
             mytextclock,
             s.mylayoutbox,
         },
