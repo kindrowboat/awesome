@@ -12,4 +12,4 @@
 	url = https://github.com/kindrowboat/awesome-wm-widgets.git
 [submodule "weather"]
 	path = weather
-	url = https://git.kindrobot.ca/kindrobot/weather.git
+	url = https://github.com/kindrowboat/weather.git
