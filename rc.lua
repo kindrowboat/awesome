@@ -54,6 +54,8 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
+-- set a reasonable maximum size for notifcation icons (I'm looking at your Opera)
+beautiful.notification_icon_size = 64
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
